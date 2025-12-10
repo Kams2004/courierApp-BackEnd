@@ -38,10 +38,12 @@ public class SecurityConfig {
                         req.requestMatchers("/api/auth/**", "/swagger-ui/**", "/api-docs/**", "/swagger-ui.html")
                                 .permitAll()
                                 .requestMatchers("/api/users").permitAll()
+                                .requestMatchers("POST", "/api/departments").permitAll()
+
                                 .requestMatchers("GET", "/api/users", "/api/users/department/**").authenticated()
                                 .requestMatchers("GET", "/api/departments", "/api/departments/**").authenticated()
                                 .requestMatchers("/api/users/**").hasAnyRole("ADMIN", "MANAGER")
-                                .requestMatchers("/api/departments/**").hasRole("ADMIN")
+
                                 .requestMatchers("/api/reports/**").authenticated()
                                 .anyRequest()
                                 .authenticated()
